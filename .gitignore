@@ -1,0 +1,9 @@
+# Obsidian local state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.obsidian/snapshots/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
