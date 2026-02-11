@@ -154,6 +154,13 @@ validation_result:
 - If multiple candidate terms exist, choose most specific active variation term; otherwise mark `REVIEW`.
 
 ### Validation logic (v1)
+
+### Confirmed policy settings
+- Variance tolerance: **strict exact match** (0 allowed variance).
+- Monetary basis: **ex-GST only** for all validation calculations.
+- Response deadline: include default deadline placeholder in `.eml` drafts for later configuration.
+- Vehicle normalization: derive canonical vehicle class mapping from contract + variations before rule evaluation.
+
 ```mermaid
 flowchart TD
     A[Transport line] --> B[Find active contract term]
@@ -206,7 +213,7 @@ flowchart TD
   1. Contract reference and commercial context
   2. Summary of invoices and disputed transport charges
   3. Evidence requested
-  4. Response deadline
+  4. Default response deadline
   5. Reservation of rights / payment hold wording (commercial-legal tone)
 
 ---
@@ -239,11 +246,11 @@ Each finding must carry:
 
 ## Open items to confirm before implementation
 1. Tolerance policy for variance checks:
-   - strict (0 variance), or allowed threshold (e.g., ±1% / ±$X)
+   - **Confirmed:** strict match only (no variance tolerance).
 2. GST/tax handling:
-   - compare ex-GST only, or GST-inclusive totals
+   - **Confirmed:** all comparisons performed **ex-GST**.
 3. Legal letter defaults:
-   - exact addressee entity/contact and default response deadline (e.g., 7 business days)
+   - **Partially confirmed:** include a default response deadline field in each draft `.eml` (exact duration to be configured).
 4. Vehicle class taxonomy:
-   - canonical class list used in contract/variations for matching
+   - **Confirmed approach:** normalize vehicle classes from contract + variation documents into a canonical mapping table before validation.
 
