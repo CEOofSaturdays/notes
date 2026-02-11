@@ -1,83 +1,249 @@
-# Coates Hire Transport Validation Agent Spec (Draft)
+# Coates Hire Transport Validation Agent Spec (v1)
 
-## Objective
-Build an Agno-based workflow that:
-1. Parses Coates Hire invoices (PDFs)
-2. Identifies and extracts all transport-related charges
-3. Validates transport charges against contract rates/terms + contract variations
-4. Groups unsupported/non-validated transport charges by month
-5. Generates detailed, legal-style request letters to Coates Hire asking for supporting evidence
+## Purpose
+Build an Agno-based agent that processes Coates Hire invoice PDFs, validates transport-related charges against contract and contract variation terms, and drafts monthly evidence-request letters (as `.eml`) for unsupported transport charges.
 
-## Current business stance
-- Transport charges will not be paid unless validated against contract terms and variations.
-- For invoices lacking supporting information, produce month-grouped evidence requests.
+## Scope (v1)
+- Local-folder based ingestion only
+- Parse PDF invoices + contract + contract variation files from agent working folder
+- Detect transport rows in invoice line items
+- Validate transport charges against contractual hourly rates by vehicle size/class
+- Group unsupported charges by **invoice month**
+- Generate **one draft letter per month** as `.eml`
+- Draft-only workflow (no auto-send)
 
-## Clarifications needed (blocking for final spec)
+## Out of scope (future enhancement)
+- Pulling documents from email inboxes automatically
+- Auto-sending letters
+- ERP/AP system integration
 
-### 1) Inputs and source of truth
-- Where will the documents live?
-  - Invoice PDFs path/repo/cloud location?
-  - Master contract PDF location?
-  - Contract variation docs location?
-- Are there multiple contracts/variations or just one active agreement family?
-- Do we have any structured export (CSV/ERP dump) alongside PDFs?
+---
 
-### 2) Transport charge identification rules
-- What labels should count as transport-related?
-  - e.g. "Transport", "Delivery", "Pickup", "Freight", "Cartage", "Mobilisation", "Demobilisation"
-- Should the agent use exact keyword matching only, or fuzzy/semantic matching with confidence scores?
-- Should negative transport lines (credits/reversals) be included and netted?
+## Input model
 
-### 3) Contract validation logic
-- How are transport rates defined in contract docs?
-  - Flat fee, distance bands, zone-based rates, equipment-class rates, minimum charges, after-hours multipliers?
-- Which variation document overrides apply, and from what effective dates?
-- What tolerance is acceptable before flagging (e.g. $0, ±1%, ±$5)?
-- Is GST/tax validated separately or excluded from transport comparison?
+### Folder layout
+```text
+/workdir
+  /invoices
+    <invoice-1>.pdf
+    <invoice-2>.pdf
+  /contracts
+    contract.pdf
+    contract-variation-1.pdf
+    contract-variation-2.pdf
+  /output
+```
 
-### 4) Matching invoices to contract terms
-- How should invoice lines map to contract rate cards?
-  - By site, job number, equipment class, region, branch, or description text?
-- What should happen when mapping is ambiguous?
-  - Fail closed (mark unsupported) or send to manual review queue?
+### Assumptions
+- Contract and variation documents in `/contracts` are authoritative.
+- Variations override base contract where effective dates and clauses apply.
+- Invoices contain identifiable transport line rows (example below).
 
-### 5) Monthly grouping and legal letter output
-- Group by:
-  - Invoice date month, service date month, or due date month?
-- One letter per month overall, or one per month per site/project?
-- Preferred tone/jurisdiction style for "legal-like" letters?
-  - Firm commercial request vs formal legal notice language?
-- Required letter metadata:
-  - Addressee name/title/email?
-  - Company legal entity details?
-  - Reference contract number and variation IDs?
-- Delivery channel:
-  - PDF letter, Word doc, email draft, or all?
+### Example transport row pattern
+`19 25 1 TRANSPORT Onhire $4,237.50 $4,237.50`
 
-### 6) Evidence request expectations
-- What exact evidence is acceptable from Coates?
-  - Dockets, run sheets, GPS logs, delivery manifests, timesheets, signed PODs, route calculations?
-- Required response deadline language?
-  - e.g. "within 7 business days"
-- Should letter include consequences/escalation language if evidence not provided?
+---
 
-### 7) Workflow, controls, and audit
-- Who approves final letters before sending?
-- Should agent only draft, or also send?
-- Where should audit outputs be stored?
-  - JSON evidence pack + human-readable report location?
-- Any redaction/privacy requirements for stored invoice data?
+## High-level architecture (Agno)
 
-### 8) Success criteria
-- What defines a successful v1?
-  - % extraction accuracy target?
-  - false-positive tolerance?
-  - turnaround time per invoice batch?
+```mermaid
+flowchart LR
+    A[/invoices PDFs/] --> B[Invoice Extraction Agent]
+    C[/contracts PDFs/] --> D[Contract Terms Agent]
+    B --> E[Normalization Layer]
+    D --> E
+    E --> F[Transport Validation Engine]
+    F --> G[Monthly Grouping Module]
+    G --> H[Letter Draft Agent (.eml)]
+    H --> I[/output/monthly-drafts/]
+    F --> J[/output/audit-json/]
+```
 
-## Proposed next deliverable
-Once answers are provided, produce:
-1. Full Agno technical spec
-2. Mermaid process diagrams (preferred)
-3. Canonical schema for invoices/transport lines/contract rules
-4. Rule engine pseudocode + exception taxonomy
-5. Letter-generation template set (monthly grouped)
+### Agent responsibilities
+1. **Invoice Extraction Agent**
+   - OCR/text extraction from invoice PDFs
+   - Extract header fields (invoice number, date, vendor, totals)
+   - Extract line items and detect `TRANSPORT` rows
+
+2. **Contract Terms Agent**
+   - Extract transport rate-card terms from contract + variations
+   - Build structured rule objects: vehicle class/size, hourly rates, effective dates, conditions
+
+3. **Validation Engine (deterministic)**
+   - Map invoice transport rows to contract rule entries
+   - Check billed amount against expected amount based on hours × rate (plus configured adjustments)
+   - Produce pass/review/fail outcome with reason codes
+
+4. **Letter Draft Agent**
+   - Aggregate unsupported rows by invoice month
+   - Draft one legal-style evidence request per month as `.eml`
+
+---
+
+## Process flow
+
+```mermaid
+flowchart TD
+    A[Load files from /workdir] --> B[Parse contract + variations]
+    B --> C[Parse invoice PDFs]
+    C --> D[Identify transport rows]
+    D --> E[Compute expected charge from rate terms]
+    E --> F{Supported by provided data?}
+    F -->|Yes| G[Mark validated]
+    F -->|No| H[Mark unsupported + reason]
+    G --> I[Store audit output]
+    H --> I
+    I --> J[Group unsupported items by invoice month]
+    J --> K[Draft 1 .eml letter per month]
+    K --> L[Save in /output/monthly-drafts]
+```
+
+---
+
+## Canonical schema (v1)
+
+```yaml
+invoice:
+  invoice_id: string
+  invoice_date: date
+  vendor_name: string
+  source_file: string
+
+transport_line_items:
+  - line_no: string|null
+    raw_text: string
+    label: string                 # e.g., TRANSPORT
+    subtype: string|null          # e.g., Onhire
+    quantity_hours: number|null
+    unit_rate_billed: number|null
+    line_amount_billed: number
+    currency: string
+
+contract_terms:
+  - term_id: string
+    vehicle_class: string
+    billing_basis: string         # hourly
+    hourly_rate: number
+    effective_from: date
+    effective_to: date|null
+    source_doc: string
+    clause_ref: string|null
+
+validation_result:
+  invoice_id: string
+  line_ref: string
+  status: PASS|REVIEW|FAIL
+  reason_codes: string[]
+  expected_amount: number|null
+  billed_amount: number
+  variance_amount: number|null
+  variance_pct: number|null
+  evidence_provided: boolean
+```
+
+---
+
+## Matching and validation rules
+
+### Detection rule (v1)
+- Mark a line as transport if normalized label contains `TRANSPORT`.
+- Preserve full raw row text for audit.
+
+### Contract matching (v1)
+- Match by vehicle size/class and active effective date window from contract terms.
+- If multiple candidate terms exist, choose most specific active variation term; otherwise mark `REVIEW`.
+
+### Validation logic (v1)
+```mermaid
+flowchart TD
+    A[Transport line] --> B[Find active contract term]
+    B -->|None| Z1[FAIL: NO_ACTIVE_TERM]
+    B -->|Found| C[Has quantity_hours?]
+    C -->|No| Z2[REVIEW: MISSING_HOURS]
+    C -->|Yes| D[Expected = hours * hourly_rate]
+    D --> E{Within tolerance?}
+    E -->|Yes| P[PASS]
+    E -->|No| Z3[FAIL: RATE_VARIANCE]
+```
+
+### Core reason codes
+- `NO_ACTIVE_TERM`
+- `AMBIGUOUS_TERM_MATCH`
+- `MISSING_HOURS`
+- `RATE_VARIANCE`
+- `MISSING_SUPPORTING_EVIDENCE`
+
+---
+
+## Monthly legal-style draft letters (.eml)
+
+### Grouping
+- Group by **invoice month** (`YYYY-MM`) based on invoice date.
+- Produce **one draft letter per month**.
+
+### Required inclusions
+- Statement that payment of disputed transport components is on hold pending validation
+- Table/list of impacted invoices and transport line amounts
+- Request for supporting evidence such as:
+  - third-party supplier invoices
+  - PODs (Proof of Delivery)
+  - related transport substantiation records
+- Requested response deadline placeholder (configurable)
+
+### Output path
+```text
+/output/monthly-drafts/coates-transport-evidence-request-YYYY-MM.eml
+```
+
+---
+
+## `.eml` draft structure
+
+- To: `<coates contact placeholder>`
+- Cc: `<internal placeholders>`
+- Subject: `Request for Supporting Evidence – Transport Charges – <Month YYYY>`
+- Body sections:
+  1. Contract reference and commercial context
+  2. Summary of invoices and disputed transport charges
+  3. Evidence requested
+  4. Response deadline
+  5. Reservation of rights / payment hold wording (commercial-legal tone)
+
+---
+
+## Audit outputs
+
+Write machine-readable evidence packs:
+
+```text
+/output/audit-json/
+  validation-results.json
+  unmatched-transport-lines.json
+  term-extraction-log.json
+```
+
+Each finding must carry:
+- source file name
+- extracted raw text snippet
+- mapping decision
+- rule result and reason codes
+
+---
+
+## Operational constraints
+- Draft-only: no outbound sending.
+- No destructive edits to source files.
+- Deterministic validation first; LLM interpretation only for extraction/mapping ambiguity handling.
+
+---
+
+## Open items to confirm before implementation
+1. Tolerance policy for variance checks:
+   - strict (0 variance), or allowed threshold (e.g., ±1% / ±$X)
+2. GST/tax handling:
+   - compare ex-GST only, or GST-inclusive totals
+3. Legal letter defaults:
+   - exact addressee entity/contact and default response deadline (e.g., 7 business days)
+4. Vehicle class taxonomy:
+   - canonical class list used in contract/variations for matching
+
