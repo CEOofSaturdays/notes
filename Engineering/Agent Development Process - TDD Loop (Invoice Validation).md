@@ -221,6 +221,72 @@ Return:
 
 ---
 
+
+## Principles from Lex x OpenClaw (generalized)
+
+1. **Agency beats verbosity**  
+   Prefer systems that *do verifiable work* over systems that merely explain.
+
+2. **Constrain the loop**  
+   Give the agent one step, one clear interface, and one definition of done.
+
+3. **Feedback is the product**  
+   The quality of tests determines the quality of self-improvement.
+
+4. **Own the execution boundary**  
+   Keep explicit rules for what can be automated vs what needs human approval.
+
+5. **Tighten context, not just prompts**  
+   Stable schemas, fixtures, and regression suites are more important than clever wording.
+
+6. **Security is part of architecture, not an afterthought**  
+   Any agent with system/data access must be designed with least privilege and auditable actions.
+
+7. **Iteration speed compounds**  
+   Short test-fix cycles create better outcomes than large, one-shot implementations.
+
+---
+
+## Anti-patterns to avoid (what breaks agent loops)
+
+1. **“Build everything” prompts**
+   - Symptom: broad output, low reliability.
+   - Fix: isolate one step and hard-scope inputs/outputs.
+
+2. **No explicit pass/fail criteria**
+   - Symptom: subjective progress, regressions hidden.
+   - Fix: define deterministic tests before implementation.
+
+3. **Schema drift between steps**
+   - Symptom: downstream failures and brittle orchestration.
+   - Fix: versioned contracts + schema validation at handoffs.
+
+4. **Overfitting to happy path data**
+   - Symptom: fails in real-world edge cases.
+   - Fix: adversarial fixtures (missing fields, OCR noise, duplicates, malformed totals).
+
+5. **Unbounded autonomy**
+   - Symptom: risky external actions or silent errors.
+   - Fix: approval gates + role-based permissions + reversible operations where possible.
+
+6. **No observability**
+   - Symptom: impossible to debug why a step failed.
+   - Fix: correlation IDs, structured logs, step-level metrics.
+
+7. **Fixing failures without capturing lessons**
+   - Symptom: repeated mistakes.
+   - Fix: append failure mode + mitigation to reusable playbook.
+
+---
+
+## Operating maxims (quick reference)
+- **Smallest viable step.**
+- **Tests before trust.**
+- **Evidence over confidence.**
+- **Automate decisions, escalate ambiguity.**
+- **Ship loops, then scale scope.**
+
+---
 ## Practical rollout plan
 
 ### Phase A — Foundation
