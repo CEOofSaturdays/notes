@@ -54,7 +54,7 @@ flowchart LR
     D --> E
     E --> F[Transport Validation Engine]
     F --> G[Monthly Grouping Module]
-    G --> H[Letter Draft Agent (.eml)]
+    G --> H[Letter Draft Agent .eml]
     H --> I[/output/monthly-drafts/]
     F --> J[/output/audit-json/]
 ```
