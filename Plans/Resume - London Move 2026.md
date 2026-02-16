@@ -5,7 +5,7 @@
 - Phone for now: **+61 428 055 476** (replace with UK number once available)
 - Email: **matt@savich.au**
 - Website: **savich.au**
-- LinkedIn: **[add exact URL]**
+- LinkedIn: **https://www.linkedin.com/in/m-savich/**
 
 ---
 
@@ -13,7 +13,7 @@
 
 # Matt Savich
 London, UK (relocating May 2026) | +61 428 055 476 | matt@savich.au  
-Website: savich.au | LinkedIn: [insert URL]
+Website: savich.au | LinkedIn: https://www.linkedin.com/in/m-savich/
 
 ## Professional Summary
 Accomplished Analytics Engineer and Solutions Developer with 5+ years of experience delivering data-led improvements across procurement, productivity, and commercial operations in mining. Proven track record designing and deploying end-to-end data products, automations, and reporting ecosystems using Python, SQL, Power BI, Azure, and Databricks. Known for translating complex SAP and operational data into practical decision tools, leading cross-functional execution, and building scalable solutions that improved visibility, efficiency, and value capture outcomes.
