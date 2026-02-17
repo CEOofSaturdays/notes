@@ -1,5 +1,10 @@
 # Matt Savich
-**[savich.au](https://savich.au)** | **[LinkedIn](https://www.linkedin.com/in/m-savich/)** | +61 428 055 476 | **matt@savich.au**
+**[savich.au](https://savich.au)** | **[LinkedIn](https://www.linkedin.com/in/m-savich/)** | **+44 (Pending eSIM)** | **matt@savich.au**
+
+---
+
+## WORK AUTHORIZATION
+*   **UK Work Rights:** Australian Citizen; Eligible for **3-year work authorization** via the UK Youth Mobility Scheme (Tier 5). Immediate eligibility for relocation.
 
 ---
 
