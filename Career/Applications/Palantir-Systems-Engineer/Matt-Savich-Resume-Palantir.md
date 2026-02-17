@@ -49,7 +49,6 @@
 *AI Orchestration and Infrastructure consultancy specializing in custom agentic workflows for data-sensitive industries.*
 
 * **Mortgage Application Agent:** Architecting an end-to-end agentic solution for mortgage brokers to automate client onboarding and documentation collection. Reduced human touchpoints by leveraging structured extraction and automated validation loops.
-* **Orchestration Patterns:** Developing modular AI agent patterns to scale from prototype to production, focusing on secure, high-performance infrastructure and "invisible computing" solutions.
 
 ---
 
