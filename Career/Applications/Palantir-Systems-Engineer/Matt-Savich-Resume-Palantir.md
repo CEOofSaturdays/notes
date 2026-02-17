@@ -32,7 +32,7 @@
 **Senior Advisor Productivity (Business Systems Analyst)** | *April 2023 – April 2024*
 *Technical Project Lead for enterprise productivity systems and facility security infrastructure.*
 
-* **Physical Security Data Infrastructure:** Led data modelling and migration of **Gallagher** access control data for **10,000+ personnel**, centralising security insights via Databricks.
+* **Physical Security Data Infrastructure:** Led the data modelling and migration of **Gallagher** access control data for **10,000+ personnel**, centralising security insights via Databricks.
 * **Platform Configuration:** Deployed and configured **Zendesk** and **Smartsheet Control Center** to digitise PMO workflows and streamline logistics operations.
 
 **Analyst Commercial Ops Model (Data Systems Analyst)** | *August 2022 – April 2023*
@@ -40,6 +40,16 @@
 
 **Analyst Business Support Projects (Automation Engineer)** | *July 2021 – August 2022*
 *Modernised legacy workflows using process mining (**Fortress IQ**) and **Jira Service Management** for 75+ staff.*
+
+---
+
+## ENTREPRENEURSHIP & SIDE PROJECTS
+
+### **Digit AI ([0-9.ai](https://0-9.ai))** | Co-Founder & Technical Lead | *2024 – Present*
+*AI Orchestration and Infrastructure consultancy specializing in custom agentic workflows for data-sensitive industries.*
+
+* **Mortgage Application Agent:** Architecting an end-to-end agentic solution for mortgage brokers to automate client onboarding and documentation collection. Reduced human touchpoints by leveraging structured extraction and automated validation loops.
+* **Orchestration Patterns:** Developing modular AI agent patterns to scale from prototype to production, focusing on secure, high-performance infrastructure and "invisible computing" solutions.
 
 ---
 
