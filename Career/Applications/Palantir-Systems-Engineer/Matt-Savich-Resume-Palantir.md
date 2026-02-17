@@ -5,7 +5,7 @@
 
 ## PROFESSIONAL SUMMARY
 
-**Systems Engineer and Technical Lead** with 6+ years of experience architecting critical business infrastructure and driving data-led transformation. Proven track record in designing bidirectional integrations between ERPs (SAP S/4HANA) and operational platforms (ServiceNow, Databricks). Expert in leveraging **AI Agents, RAG, and Human-in-the-Loop (HITL)** governance to automate complex financial and procurement workflows. Built and deployed **OpenIndex**, a custom CLI/Web ecosystem for agentic task management, capturing over **$100 million in annual value** for a 200-FTE department.
+**Systems Engineer and Technical Lead** with 6+ years of experience architecting critical business infrastructure and driving data-led transformation in high-stakes mining and procurement environments. Proven track record in designing bidirectional integrations between ERPs (SAP S/4HANA) and operational platforms (ServiceNow, Databricks). Expert in leveraging **AI Agents, RAG, and Human-in-the-Loop (HITL)** governance to automate complex financial workflows. Developed **OpenIndex**, a custom full-stack agentic ecosystem for task management and automated triage, capturing over **$100 million in annual value** for a 200-FTE department.
 
 ---
 
@@ -15,24 +15,24 @@
 **Specialist Procurement Systems (Technical Lead: DASH)** | *July 2025 – Present*
 *Lead Architect and Product Owner for the Digital Automation & Service Hub (DASH), the central operating system for 200+ procurement and supply chain staff.*
 
-* **Agentic Infrastructure & HITL:** Developed **OpenIndex**, a proprietary CLI and web application for managing AI Agent tasks and Human-in-the-Loop (HITL) interactions, streamlining complex triage and administrative activities.
-* **Systems Architecture & Integration:** Designed bidirectional API integrations connecting **ServiceNow, Databricks, and SAP S/4HANA**, enabling real-time "write-back" capabilities for financial records and service entries.
-* **AI Transformation (Internal AIP):** Partnered with the Department GM to lead a functional transformation. Engineered AI Agents using **RAG** and digital playbooks to automate triage for **40,000+ annual requests** across sourcing, warehousing, and commercial teams.
-* **Outcome-Driven Engineering:** Built automated "Three-Way Match" validation logic for high-volume invoice processing, enforcing contract compliance and capturing massive cost avoidance.
-* **Operational Leadership:** Lead a technical road-map for a 190+ FTE department, conducting high-frequency POCs to align technology initiatives with business outcomes.
+* **Full-Stack Agentic Infrastructure:** Independently engineered **OpenIndex**, a proprietary CLI and web application for managing AI Agent tasks and HITL (Human-in-the-Loop) interactions. Migrated department capability from ad-hoc automation to robust, agent-driven full-stack solutions.
+* **Autonomous Error Handling & Self-Correction:** Designed AI agents that interact directly with **SAP S/4HANA** APIs. Implemented a sophisticated feedback loop where SAP GUI constraints and validation errors are fed back to agents for autonomous self-correction, with seamless escalation to HITL processing for edge cases.
+* **Functional AI Transformation:** Partnered with the Department GM to lead a radical AI-first transformation. Re-engineered manual administrative roles into "Case Managers" overseeing agent-processed work, significantly reducing the cost of procurement execution.
+* **Intelligent Knowledge Systems:** Deployed RAG-based Knowledge Agents (part of DASH) to automate responses to complex internal and external email queries, utilizing live data lookup and structured extraction models.
+* **Systems Architecture:** Engineered bidirectional integrations connecting **ServiceNow, Databricks, and SAP**, enabling real-time "write-back" for Purchase Requisitions and Service Entry creation.
 
 ### **Roy Hill** | Perth, WA
 **Senior Advisor Procurement & Supply Operations (Analytics Engineer)** | *April 2024 – July 2025*
 *Established foundational data engineering capability, migrating legacy Excel workflows to a modern cloud-first architecture.*
 
-* **DevOps Transformation:** Introduced software engineering rigour to business systems via **Azure DevOps** and **Git**, establishing CI/CD pipelines for Python and SQL-based projects.
+* **DevOps Transformation:** Introduced software engineering rigour via **Azure DevOps** and **Git**, establishing CI/CD pipelines for SQL and Python-based projects.
 * **Value Engineering:** Coded a "Value Tracking" solution verifying **$100M+ in annual savings**, serving as the executive source of truth for departmental ROI.
 * **Data Pipeline Development:** Developed production-grade ETL pipelines using **Python, PySpark, and Databricks** to ingest and model complex SAP data.
 
 **Senior Advisor Productivity (Business Systems Analyst)** | *April 2023 – April 2024*
 *Technical Project Lead for enterprise productivity systems and facility security infrastructure.*
 
-* **Physical Security Data Infrastructure:** Led the data modelling and migration of **Gallagher** access control data for **10,000+ personnel**, centralising security insights via Databricks.
+* **Physical Security Data Infrastructure:** Led data modelling and migration of **Gallagher** access control data for **10,000+ personnel**, centralising security insights via Databricks.
 * **Platform Configuration:** Deployed and configured **Zendesk** and **Smartsheet Control Center** to digitise PMO workflows and streamline logistics operations.
 
 **Analyst Commercial Ops Model (Data Systems Analyst)** | *August 2022 – April 2023*
@@ -45,11 +45,11 @@
 
 ## TECHNICAL SKILLS
 
-* **Systems Engineering:** SAP S/4HANA (REST API), ServiceNow (Flow Designer), Gallagher Security, Azure Logic Apps, API Integration.
-* **AI & Automation:** **OpenIndex (Custom Agentic Framework)**, RAG, AI Agents, Human-in-the-Loop (HITL), LLM Orchestration, Python, PySpark.
+* **AI & Automation:** **OpenIndex (Full-Stack Agentic Framework)**, AI Agents, RAG, HITL Governance, LLM Orchestration (Self-Correction Loops), Python, PySpark.
+* **Systems Engineering:** SAP S/4HANA (REST API/GUI Guardrails), ServiceNow (Flow Designer), Gallagher Security, API Integration.
 * **Data & DevOps:** SQL, Databricks, dbt, Azure DevOps, Git, CI/CD pipelines (YAML), Airflow.
 * **BI & Visualisation:** Power BI, Looker, Tableau, Plotly, Vega.
-* **Strategy:** Technical Program Management, Product Ownership, Rapid Prototyping (POCs), Stakeholder Alignment.
+* **Strategy:** Technical Program Management, Product Ownership, Rapid Prototyping (POCs), AI-Driven Functional Transformation.
 
 ---
 
