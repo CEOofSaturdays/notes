@@ -1,5 +1,5 @@
 # Matt Savich
-**Website** | **LinkedIn** | +61 428 055 476 | **matt@savich.au**
+**[savich.au](https://savich.au)** | **[LinkedIn](https://www.linkedin.com/in/m-savich/)** | +61 428 055 476 | **matt@savich.au**
 
 ---
 
