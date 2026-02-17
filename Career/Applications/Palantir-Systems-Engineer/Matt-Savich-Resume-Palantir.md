@@ -12,17 +12,17 @@
 ## EXPERIENCE
 
 ### **Hancock Iron Ore (Roy Hill & Atlas Iron Merge)** | Perth, WA
-**Specialist Procurement Systems (Technical Lead: DASH)** | *July 2025 – Present*
+**Specialist Procurement Systems (Technical Lead: DASH)** | *July 2026 – Present*
 *Lead Architect and Product Owner for the Digital Automation & Service Hub (DASH), the central operating system for 200+ procurement and supply chain staff.*
 
-* **Full-Stack Agentic Infrastructure:** Independently engineered **OpenIndex**, a proprietary CLI and web application for managing AI Agent tasks and HITL (Human-in-the-Loop) interactions. Migrated department capability from ad-hoc automation to robust, agent-driven full-stack solutions.
+* **Full-Stack Agentic Infrastructure:** Independently engineered **OpenIndex**, a proprietary CLI and web application for managing AI Agent tasks and HITL (Human-in-the-Loop) interactions. Migrated department capability from legacy automation to robust, agent-driven full-stack solutions.
 * **Autonomous Error Handling & Self-Correction:** Designed AI agents that interact directly with **SAP S/4HANA** APIs. Implemented a sophisticated feedback loop where SAP GUI constraints and validation errors are fed back to agents for autonomous self-correction, with seamless escalation to HITL processing for edge cases.
-* **Functional AI Transformation:** Partnered with the Department GM to lead a radical AI-first transformation. Re-engineered manual administrative roles into "Case Managers" overseeing agent-processed work, significantly reducing the cost of procurement execution.
-* **Intelligent Knowledge Systems:** Deployed RAG-based Knowledge Agents (part of DASH) to automate responses to complex internal and external email queries, utilizing live data lookup and structured extraction models.
+* **Functional AI Transformation:** Partnered with the Department GM to lead a radical AI-first transformation. Re-engineered manual administrative roles into "Case Managers" overseeing agent-processed work, significantly reducing the cost of procurement execution and scaling operational capacity.
+* **Intelligent Knowledge Systems:** Deployed RAG-based Knowledge Agents to automate responses to complex internal and external email queries, utilizing live data lookup and structured extraction models to handle **40,000+ annual requests**.
 * **Systems Architecture:** Engineered bidirectional integrations connecting **ServiceNow, Databricks, and SAP**, enabling real-time "write-back" for Purchase Requisitions and Service Entry creation.
 
 ### **Roy Hill** | Perth, WA
-**Senior Advisor Procurement & Supply Operations (Analytics Engineer)** | *April 2024 – July 2025*
+**Senior Advisor Procurement & Supply Operations (Analytics Engineer)** | *April 2024 – July 2026*
 *Established foundational data engineering capability, migrating legacy Excel workflows to a modern cloud-first architecture.*
 
 * **DevOps Transformation:** Introduced software engineering rigour via **Azure DevOps** and **Git**, establishing CI/CD pipelines for SQL and Python-based projects.
@@ -32,7 +32,7 @@
 **Senior Advisor Productivity (Business Systems Analyst)** | *April 2023 – April 2024*
 *Technical Project Lead for enterprise productivity systems and facility security infrastructure.*
 
-* **Physical Security Data Infrastructure:** Led the data modelling and migration of **Gallagher** access control data for **10,000+ personnel**, centralising security insights via Databricks.
+* **Personnel & Security Data Infrastructure:** Led the data modelling and migration of **Gallagher** access control data for **10,000+ personnel**, centralising security and personnel insights via Databricks.
 * **Platform Configuration:** Deployed and configured **Zendesk** and **Smartsheet Control Center** to digitise PMO workflows and streamline logistics operations.
 
 **Analyst Commercial Ops Model (Data Systems Analyst)** | *August 2022 – April 2023*
@@ -46,9 +46,10 @@
 ## ENTREPRENEURSHIP & SIDE PROJECTS
 
 ### **Digit AI ([0-9.ai](https://0-9.ai))** | Co-Founder & Technical Lead | *2024 – Present*
-*AI Orchestration and Infrastructure consultancy specializing in custom agentic workflows for data-sensitive industries.*
+*AI Orchestration consultancy specializing in custom agentic workflows for data-sensitive industries.*
 
 * **Mortgage Application Agent:** Architecting an end-to-end agentic solution for mortgage brokers to automate client onboarding and documentation collection. Reduced human touchpoints by leveraging structured extraction and automated validation loops.
+* **Orchestration Patterns:** Developing modular AI agent patterns to scale from prototype to production, focusing on secure, high-performance infrastructure and automated data validation.
 
 ---
 
