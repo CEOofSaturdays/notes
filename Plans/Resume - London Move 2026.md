@@ -28,9 +28,14 @@ Accomplished Analytics Engineer and Solutions Developer with 5+ years of experie
 
 ## Experience
 
+### Hancock Iron Ore — Perth, WA (Hybrid)
+#### Specialist, Procurement Systems
+**Jul 2025 – Present**
+- Developing systems and analytics for the procurement function.
+
 ### Roy Hill — Perth, WA
 #### Senior Advisor, Procurement & Supply Operations (Analytics Engineer & Solutions Developer)
-**Apr 2024 – Present**
+**Apr 2024 – Jul 2025**
 - Established the inaugural data analytics function for a procurement division managing multi-billion-dollar annual spend and supporting 150+ staff.
 - Architected and implemented value-tracking solutions that improved visibility of annual value capture outcomes across procurement operations.
 - Designed and deployed CI/CD pipelines in Azure DevOps to streamline analytics solution delivery and deployment quality.
